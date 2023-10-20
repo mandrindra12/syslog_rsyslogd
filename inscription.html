@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Inscription</title>
+        <style>
+                *{
+
+                        margin: 0;
+                        color:  #1b3514;
+                        font-family: 'JetBrains Mono', monospace;
+                }
+                .d-center{
+                       text-align: center;
+                        padding: 10px;
+                        justify-content: center;
+                }
+                header{
+                        margin: 20px;
+                        font-size: 20px;
+                        width: auto;
+                }
+                input.button{
+                        border: 1px solid #1b3514;
+                        border-radius: 6px;
+                        margin-top: 5px;
+                        margin-bottom: 5px;
+                        width: 250px;
+                        height: 30px;
+                        color: white;
+                        background-color: #1b3514;
+                }
+                a:hover, input:hover{
+                        font-size: small;
+                        font-weight: bolder;
+                }
+                input.entry{
+                        border: 1px solid #1b3514;
+                        border-radius: 6px;
+                        margin-top: 5px;
+                        margin-bottom: 5px;
+                        width: 500px;
+                        height: 30px;
+                }
+                .d-flex{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                }
+                main{
+                        display: flex;
+                        border: 1px solid #fff;
+                        border-radius: 35px;
+                        margin-top: 100px;
+                        justify-content: center;
+                        text-align: center;
+                }
+                label{
+                        font-weight: bold;
+                }
+                a{
+                        border: 1px solid #084C61;
+                        border-radius: 6px;
+                        text-decoration: none;
+                        color: black;
+                        padding: 8px;
+                        font-size: 12pt;
+                }
+                .flex-column{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        justify-content: left;
+                }               
+                h2{
+                        font-style: italic;
+                }
+                img{
+                        width: 28px;
+                        height: auto;
+                }
+        </style>
+</head>
+<body>
+        <header class="d-flex">
+                <div>
+                        <h2>AUTH.LOG</h2>
+                </div>
+                <div>
+                        <h3>Sign-up</h3>
+                </div>
+        </header>
+        <main> 
+                <form action="cgi-bin/inscription.cgi" method="post" name="sign-in">
+                <div class="flex-column">
+                        <label for="username">Enter your username</label>
+                        <input type="text" name="username" class="entry" required placeholder="Username">
+                </div>
+                <br>
+                <div class="flex-column">
+                        <label for="passwd">Enter your password</label>
+                        <input type="password" name="passwd" class="entry" required placeholder="Password">
+                        
+                </div>
+                <br>
+                <div class="flex-column">
+                        <label for="re-passwd">Retype your password</label>
+                        <input type="password" name="re-passwd" class="entry" required placeholder="Retype password">
+                </div>
+                <br>
+                <div>
+                        <input type="submit" value="Sign in" class="button">
+                </div>
+        </form>
+        </main>
+</body>
+</html>
