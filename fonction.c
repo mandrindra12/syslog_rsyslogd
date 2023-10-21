@@ -20,7 +20,7 @@ void header_html() {
                 }\
                 a {text-decoration: none;}\
                 a:hover {\
-                        font-size:23px;\
+                        font-weight:900;\
                 }\
                 a.head{\
                         font-family: 'JetBrains Mono';\
@@ -209,21 +209,25 @@ void user_not_found(){
                 "<strong><a href=\"./rsyslog.cgi\">HOME</a><strong></h1>");
                 printf("</html>");
 }
-void other_page_html(int line, char *username) {
+void other_page_html(int line, char *username, int actual_page) {
         int total_page = math_round((float)line/10);
-        for(int i = 0; i < total_page; i++) {
-        // printf("<div'>");
+        int min, max;
+        min = (actual_page-3 > 0) ? actual_page-3 : 0;
+        max = (actual_page+3 < total_page) ? actual_page+2 : total_page;
+        printf("<div style='display: flex; flex-direction: row; justify-content: center;'>");
+        for(int i = min; i < max; i++) {
         printf(
-                
-                "<form action=\"page.cgi\" method=\"get\" style=\"display: inline;\">" 
+
+                "<form action=\"page.cgi\" method=\"get\" style='border: 1px #1b3514 solid; border-radius: 6px; margin: 5px 6px'>" 
                 "<input type=\"hidden\" name=\"username\" value=\"%s\">"
-                "<input type=\"submit\" value=\"%d\" name=\"page\">"
+                "<input type=\"submit\" value=\"%d\" name=\"page\" style='background-color: #1b3514;margin:0;\
+                        color: aliceblue;border: 1px #1b3514 solid; border-radius: 6px;'>"
                 "</form>"
                 
                 , username, i+1
         );
-        // printf("</div>");
         }
+        printf("</div>");
 
 }
 int redirect(const char *url) {

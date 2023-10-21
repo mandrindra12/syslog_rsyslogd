@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
         FILE *auth_log = NULL;
         auth_log = fopen("/var/log/auth.log", "r");
         if(!is_authenticated()) {
-                redirect("http://localhost");
+                redirect("http://mandrindra.org");
                 return 0;
         }
         if(auth_log == NULL){

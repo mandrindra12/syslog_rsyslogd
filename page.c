@@ -16,7 +16,7 @@ int main(){
         first = last - 10;
         log_t *log = get_custom_logs(get_session(), username);
         if(!is_authenticated()) {
-                redirect("http://localhost");
+                redirect("http://mandrindra.org");
                 return 0;
         }
         if(!log || !env || !query || !username){
@@ -53,19 +53,19 @@ int main(){
         log_t *actual_logs = go_to(log, first);
         for(int i = 0; i < 10 && actual_logs->next_log!=NULL; i++) {
                 if(strcmp((actual_logs)->session_state, "opened") == 0){        
-                        printf("<tr class=\"line\"><td>%s</t><td><p style='color: green'>%s</p></td><td><a href=\"./query.cgi?username=%s\">%s</a></td></tr>",
+                        printf("<tr class=\"line\"><td>%s</t><td><p style='color: green'>%s</p></td><td><a href=\"./page.cgi?username=%s&page=1\">%s</a></td></tr>",
                         (actual_logs)->date, (actual_logs)->session_state, (actual_logs)->username, (actual_logs)->username);
                 }else if(strcmp((actual_logs)->session_state, "failed") == 0){
-                        printf("<tr class=\"line\"><td>%s</td><p style='color: yellow'>%s</p><td><a href=\"./query.cgi?username=%s\">%s</a></td></tr>", 
+                        printf("<tr class=\"line\"><td>%s</td><td><p style='color: yellow'>%s</p></td><td><a href=\"./page.cgi?username=%s&page=1\">%s</a></td></tr>", 
                         (actual_logs)->date, (actual_logs)->session_state, (actual_logs)->username, (actual_logs)->username);
                 }else{
-                        printf("<tr class=\"line\"><td>%s</t><td><p style='color: red'>%s</p></td><td><a href=\"./query.cgi?username=%s\">%s</a></td></tr>", 
+                        printf("<tr class=\"line\"><td>%s</td><td><p style='color: red'>%s</p></td><td><a href=\"./page.cgi?username=%s&page=1\">%s</a></td></tr>", 
                         (actual_logs)->date, (actual_logs)->session_state, (actual_logs)->username, (actual_logs)->username);
                 }
                 actual_logs = actual_logs->next_log;               
         }
         printf("</table>");
-        other_page_html(number_of_custom_logs, actual_logs->username);
+        other_page_html(number_of_custom_logs, actual_logs->username, page);
         end_html();
         free(log);
         free(query);

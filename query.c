@@ -41,7 +41,7 @@ int main() {
                 number_of_custom_logs++;
         }
         printf("</table>");
-        other_page_html(number_of_custom_logs, custom_logs->username);     
+        other_page_html(number_of_custom_logs, custom_logs->username, 3);     
         printf("</html>");    
         return 0;
 }
